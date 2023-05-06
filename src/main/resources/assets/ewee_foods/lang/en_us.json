@@ -1,3 +1,5 @@
 {
-  "item.ewee_foods.salt": "Salt"
+  "item.ewee_foods.salt": "Salt",
+
+  "block.ewee_foods.salt_mineral": "Salt Mineral"
 }

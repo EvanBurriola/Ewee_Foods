@@ -1,6 +1,7 @@
 package ewee_foods;
 
 import com.mojang.logging.LogUtils;
+import ewee_foods.block.ModBlocks;
 import ewee_foods.item.ModItems;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -24,6 +25,7 @@ public class Ewee_FoodsMain
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(eventBus);
+        ModBlocks.register(eventBus);
 
         eventBus.addListener(this::setup);
 
