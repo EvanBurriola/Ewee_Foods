@@ -18,7 +18,7 @@ import java.util.function.Supplier;
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, Ewee_FoodsMain.MOD_ID);
-    public static final RegistryObject<Block> SALT_MINERAL = registerBlock("salt_mineral",() -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+    public static final RegistryObject<Block> SALT_MINERAL = registerBlock("salt_mineral",() -> new Block(BlockBehaviour.Properties.of(Material.STONE)
             .strength(9f).requiresCorrectToolForDrops()), CreativeModeTab.TAB_MISC);
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab){
