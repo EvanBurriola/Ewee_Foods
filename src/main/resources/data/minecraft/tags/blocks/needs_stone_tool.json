@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "ewee_foods:salt_mineral"
+    "ewee_foods:salt_mineral",
+    "ewee_foods:crockpot"
   ]
 }

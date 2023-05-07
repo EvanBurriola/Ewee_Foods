@@ -1,6 +1,7 @@
 package ewee_foods.block;
 
 import ewee_foods.Ewee_FoodsMain;
+import ewee_foods.block.custom.CrockpotBlock;
 import ewee_foods.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -20,6 +21,8 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, Ewee_FoodsMain.MOD_ID);
     public static final RegistryObject<Block> SALT_MINERAL = registerBlock("salt_mineral",() -> new Block(BlockBehaviour.Properties.of(Material.STONE)
             .strength(9f).requiresCorrectToolForDrops()), CreativeModeTab.TAB_MISC);
+    public static final RegistryObject<Block> CROCKPOT = registerBlock("crockpot",() -> new CrockpotBlock(BlockBehaviour.Properties.of(Material.STONE)
+            .strength(2f).noOcclusion().requiresCorrectToolForDrops()), CreativeModeTab.TAB_MISC);
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab){
         RegistryObject<T> toReturn = BLOCKS.register(name,block);

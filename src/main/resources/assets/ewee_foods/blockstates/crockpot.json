@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "ewee_foods:block/crockpot" },
+    "facing=east": { "model": "ewee_foods:block/crockpot", "y": 90 },
+    "facing=south": { "model": "ewee_foods:block/crockpot", "y": 180 },
+    "facing=west": { "model": "ewee_foods:block/crockpot", "y": 270 }
+  }
+}
