@@ -1,4 +1,4 @@
-# Ewee_Foods
+# Ewee Foods
 
 Mod made for Minecraft 1.18.2 using the Forge API. This mod adds custom food items, resources, and crafts to Minecraft.
 
