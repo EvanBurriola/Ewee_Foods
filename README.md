@@ -1,6 +1,7 @@
 # Ewee_Foods
 
-Mod made for Minecraft 1.18.2 using the Forge API. This mod adds custom food items, resources, and crafts to Minecraft.                                                                   
+Mod made for Minecraft 1.18.2 using the Forge API. This mod adds custom food items, resources, and crafts to Minecraft.
+
 >
 >
 ***MOD LIST***
@@ -14,3 +15,4 @@ Mod made for Minecraft 1.18.2 using the Forge API. This mod adds custom food ite
 
 >This item is gathered from the Salt Mineral block when mined. It will be used in future crafting recipies to make custom food items.
 
+<img src="https://github.com/EvanBurriola/Ewee_Foods/blob/main/SaltSS.png" style="position:relative; width:50%; height:50%;">
