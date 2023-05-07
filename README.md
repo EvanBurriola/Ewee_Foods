@@ -13,3 +13,4 @@ Mod made for Minecraft 1.18.2 using the Forge API. This mod adds custom food ite
  #### Adds new custom Item "Salt".
 
 >This item is gathered from the Salt Mineral block when mined. It will be used in future crafting recipies to make custom food items.
+
