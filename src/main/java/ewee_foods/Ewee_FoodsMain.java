@@ -2,7 +2,11 @@ package ewee_foods;
 
 import com.mojang.logging.LogUtils;
 import ewee_foods.block.ModBlocks;
+import ewee_foods.block.entity.ModBlockEntities;
 import ewee_foods.item.ModItems;
+import ewee_foods.screen.CrockpotScreen;
+import ewee_foods.screen.ModMenuTypes;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Blocks;
@@ -29,6 +33,8 @@ public class Ewee_FoodsMain
 
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
+        ModBlockEntities.register(eventBus);
+        ModMenuTypes.register(eventBus);
 
         eventBus.addListener(this::setup);
         eventBus.addListener(this::clientSetup);
@@ -39,6 +45,8 @@ public class Ewee_FoodsMain
 
     private void clientSetup(final FMLClientSetupEvent event){
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CROCKPOT.get(), RenderType.cutout());
+
+        MenuScreens.register(ModMenuTypes.CROCKPOT_MENU.get(), CrockpotScreen::new);
     }
 
     private void setup(final FMLCommonSetupEvent event)
