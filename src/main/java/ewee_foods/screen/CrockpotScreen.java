@@ -27,11 +27,13 @@ public class CrockpotScreen extends AbstractContainerScreen<CrockpotMenu> {
 
         //pX,pY,pUoffset, pVoffset, pUWidth
         if(menu.isCrafting()) {
-            //Flame (bottom left TOFILL pix: 58,50 | bottom left FILLED: 177,14 (w:14,h:14)
-            blit(pPoseStack, x + 58, y + 50, 177, 14, 14, 14-menu.getScaledProgressFlame());
-
             //Arrow (bottom left TOFILL pix: 80,52 | bottom left FILLED: 177,31 (w:24,h:17)
-            blit(pPoseStack, x + 80, y + 52, 177, 31, menu.getScaledProgressArrow(), 17);
+            this.blit(pPoseStack,  x+80, y+52-17, 177, 14, menu.getScaledProgressArrow(), 17);
+        }
+        if(menu.hasFuel()){
+            //Flame (bottom left TOFILL pix: (x+)58,(y+)50 | bottom left FILLED: 177,14 (w:14,h:14)
+            int flame = menu.getScaledProgressFlame();
+            this.blit(pPoseStack, x+58, y+50-14+(14-flame), 177, 14-flame, 14, flame);
         }
     }
 

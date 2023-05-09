@@ -1,11 +1,9 @@
 package ewee_foods.block.entity.custom;
 
-import ewee_foods.block.ModBlocks;
+import ewee_foods.Ewee_FoodsMain;
 import ewee_foods.block.entity.ModBlockEntities;
-import ewee_foods.item.ModItems;
 import ewee_foods.recipe.CrockpotRecipe;
 import ewee_foods.screen.CrockpotMenu;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -18,15 +16,12 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.PotionUtils;
-import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -37,8 +32,8 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
 import java.util.Optional;
-import java.util.Random;
-import java.util.zip.CRC32;
+import java.util.logging.Logger;
+
 
 public class CrockpotBlockEntity extends BlockEntity implements MenuProvider {
     //size: 4 -> slots in block entity
@@ -52,7 +47,9 @@ public class CrockpotBlockEntity extends BlockEntity implements MenuProvider {
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 72;
+    private int maxProgress = 200;
+    private int fuel = 0; //Current remaining fuel
+    private int burnValue = 0;//The start value of the last fuel item consumed
     public CrockpotBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
         super(ModBlockEntities.CROCKPOT_BLOCK_ENTITY.get(), pWorldPosition, pBlockState);
         this.data = new ContainerData() {
@@ -60,6 +57,8 @@ public class CrockpotBlockEntity extends BlockEntity implements MenuProvider {
                 switch (index) {
                     case 0: return CrockpotBlockEntity.this.progress;
                     case 1: return CrockpotBlockEntity.this.maxProgress;
+                    case 2: return CrockpotBlockEntity.this.fuel;
+                    case 3: return CrockpotBlockEntity.this.burnValue;
                     default: return 0;
                 }
             }
@@ -68,11 +67,13 @@ public class CrockpotBlockEntity extends BlockEntity implements MenuProvider {
                 switch(index) {
                     case 0: CrockpotBlockEntity.this.progress = value; break;
                     case 1: CrockpotBlockEntity.this.maxProgress = value; break;
+                    case 2: CrockpotBlockEntity.this.fuel = value; break;
+                    case 3: CrockpotBlockEntity.this.burnValue = value; break;
                 }
             }
 
             public int getCount() {
-                return 2;
+                return 4;
             }
         };
     }
@@ -136,6 +137,7 @@ public class CrockpotBlockEntity extends BlockEntity implements MenuProvider {
 
     public static void tick(Level pLevel, BlockPos pPos, BlockState pState, CrockpotBlockEntity pBlockEntity) {
         if(hasRecipe(pBlockEntity)) {
+            consumeFuel(pBlockEntity);
             pBlockEntity.progress++;
             setChanged(pLevel, pPos, pState);
             if(pBlockEntity.progress > pBlockEntity.maxProgress) {
@@ -143,6 +145,10 @@ public class CrockpotBlockEntity extends BlockEntity implements MenuProvider {
             }
         } else {
             pBlockEntity.resetProgress();
+            setChanged(pLevel, pPos, pState);
+        }
+        if(hasFuel(pBlockEntity)) {
+            pBlockEntity.fuel--; //Fuel burns every tick!
             setChanged(pLevel, pPos, pState);
         }
     }
@@ -159,17 +165,43 @@ public class CrockpotBlockEntity extends BlockEntity implements MenuProvider {
 
         return match.isPresent() && canInsertAmountIntoOutputSlot(inventory)
                 && canInsertItemIntoOutputSlot(inventory, match.get().getResultItem())
-                && hasFuelInSlot(entity);
+                && (hasFuel(entity) || hasFuelInSlot(entity));
     }
 
+    //Update this to check if there is fuel, give entity fuel value of getBurnTime. Only consume fuel in the slot if
+    // entity fuel value = 0
     private static boolean hasFuelInSlot(CrockpotBlockEntity entity) {
         ItemStack stack = entity.itemHandler.getStackInSlot(0);
-        return stack.getBurnTime(RecipeType.SMELTING) != 0; //Returns true if item in fuel slot has a burn time property
+        int burnTime = ForgeHooks.getBurnTime(stack,RecipeType.SMELTING);
+        return burnTime > 0; //Returns true if item in fuel slot has a burn time property
     }
 
-//    private static boolean hasToolsInToolSlot(CrockpotBlockEntity entity) {
-//        return entity.itemHandler.getStackInSlot(2).getItem() == ModItems.SALT.get();
-//    }
+    private static boolean hasFuel(CrockpotBlockEntity entity){
+        return entity.fuel > 0;
+    }
+
+    private static void consumeFuel(CrockpotBlockEntity entity){
+        Level level = entity.level;
+        SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
+        for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
+            inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
+        }
+
+        Optional<CrockpotRecipe> match = level.getRecipeManager()
+                .getRecipeFor(CrockpotRecipe.Type.INSTANCE, inventory, level);
+
+        if(match.isPresent()){
+            if(!hasFuel(entity)) {
+                if (hasFuelInSlot(entity)){
+                    ItemStack stack = entity.itemHandler.getStackInSlot(0);
+                    entity.burnValue = ForgeHooks.getBurnTime(stack,RecipeType.SMELTING);
+                    entity.fuel = entity.burnValue; //set fuel to fuel items burn value
+                    Ewee_FoodsMain.LOGGER.info("Burn Time: " + entity.burnValue);
+                    entity.itemHandler.extractItem(0, 1, false); //Only consume fuel item if its burn value is depleted
+                }
+            }
+        }
+    }
 
     private static void craftItem(CrockpotBlockEntity entity) {
         Level level = entity.level;
@@ -182,7 +214,6 @@ public class CrockpotBlockEntity extends BlockEntity implements MenuProvider {
                 .getRecipeFor(CrockpotRecipe.Type.INSTANCE, inventory, level);
 
         if(match.isPresent()) {
-            entity.itemHandler.extractItem(0,1, false);
             entity.itemHandler.extractItem(1,1, false);
             entity.itemHandler.extractItem(2,1, false);
             entity.itemHandler.extractItem(3,1, false);
@@ -191,12 +222,16 @@ public class CrockpotBlockEntity extends BlockEntity implements MenuProvider {
             entity.itemHandler.setStackInSlot(4, new ItemStack(match.get().getResultItem().getItem(),
                     entity.itemHandler.getStackInSlot(4).getCount() + 1));
 
-            entity.resetProgress();
+            entity.progress = 0;
         }
     }
 
     private void resetProgress() {
-        this.progress = 0;
+        if(this.progress != 0){
+            this.progress--;
+        } else {
+            this.progress = 0;
+        }
     }
 
     private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack output) {

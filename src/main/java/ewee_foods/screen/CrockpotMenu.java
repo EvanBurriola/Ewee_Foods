@@ -19,7 +19,7 @@ public class CrockpotMenu extends AbstractContainerMenu {
     private final Level level;
     private final ContainerData data;
     public CrockpotMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2)); //SAME AS getCount() in CrockpotBlockEntity
+        this(pContainerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4)); //SAME AS getCount() in CrockpotBlockEntity
     }
     public CrockpotMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.CROCKPOT_MENU.get(), pContainerId);
@@ -45,6 +45,7 @@ public class CrockpotMenu extends AbstractContainerMenu {
     public boolean isCrafting() {
         return data.get(0) > 0;
     }
+    public boolean hasFuel(){ return data.get(2) > 0; }
 
     public int getScaledProgressArrow() {
         int progress = this.data.get(0);
@@ -55,11 +56,11 @@ public class CrockpotMenu extends AbstractContainerMenu {
     }
 
     public int getScaledProgressFlame() {
-        int progress = this.data.get(0);
-        int maxProgress = this.data.get(1);  // Max Progress
-        int progressFlameSize = 14; // This is the height in pixels of your arrow. Flame(14w : 14h)
+        int fuel = this.data.get(2);  //current fuel
+        int burnValue = this.data.get(3); //Last fuel item consumed's burn value
+        int progressFlameSize = 14; // This is the height in pixels of your flame. Flame(14w : 14h)
 
-        return maxProgress != 0 && progress != 0 ? progress * progressFlameSize / maxProgress : 0;
+        return burnValue != 0 && fuel != 0 ? fuel * progressFlameSize / burnValue : 0;
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons

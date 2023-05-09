@@ -27,8 +27,10 @@ public class CrockpotRecipe implements Recipe<SimpleContainer> {
     @Override
     public boolean matches(SimpleContainer pContainer, Level pLevel) {
         //if(pLevel.isClientSide()) return false; IF ENTITY CRASHES(ticking block entity error) ON SERVER
+        //REMOVE +-1 for strict recipe.
+        //GOAL: never check fuel slot, make method verify
         for(int i = 0; i < recipeItems.size(); i++){
-            if(!recipeItems.get(i).test(pContainer.getItem(i)))
+            if(!recipeItems.get(i).test(pContainer.getItem(i+1)))
                 return false; //If item doesn't match a recipe
         }
         return true; //All items match a recipe
@@ -80,7 +82,7 @@ public class CrockpotRecipe implements Recipe<SimpleContainer> {
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "output"));
 
             JsonArray ingredients = GsonHelper.getAsJsonArray(json, "ingredients");
-            NonNullList<Ingredient> inputs = NonNullList.withSize(4, Ingredient.EMPTY); //Ingredient arrays
+            NonNullList<Ingredient> inputs = NonNullList.withSize(3, Ingredient.EMPTY); //Ingredient arrays
 
             for (int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
