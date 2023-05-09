@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "ewee_foods:machines/crockpot/salt_mineral",
+		"0": "ewee_foods:machines/crockpot/leg_texture",
 		"1": "ewee_foods:machines/crockpot/base_texture",
 		"2": "ewee_foods:machines/crockpot/side_texture",
 		"3": "ewee_foods:machines/crockpot/lid_texture",

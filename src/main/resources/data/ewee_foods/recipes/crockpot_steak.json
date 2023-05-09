@@ -2,6 +2,15 @@
   "type": "ewee_foods:crockpot",
   "ingredients": [
     {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "ewee_foods:salt"
+    },
+    {
+      "item": "minecraft:beef"
+    },
+    {
       "item": "ewee_foods:salt"
     }
   ],

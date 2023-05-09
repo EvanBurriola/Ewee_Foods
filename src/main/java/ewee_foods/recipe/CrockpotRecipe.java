@@ -26,7 +26,13 @@ public class CrockpotRecipe implements Recipe<SimpleContainer> {
     }
     @Override
     public boolean matches(SimpleContainer pContainer, Level pLevel) {
-        return recipeItems.get(0).test(pContainer.getItem(1)); //Get item from block entity slot!
+        //if(pLevel.isClientSide()) return false; IF ENTITY CRASHES(ticking block entity error) ON SERVER
+        for(int i = 0; i < recipeItems.size(); i++){
+            if(!recipeItems.get(i).test(pContainer.getItem(i)))
+                return false; //If item doesn't match a recipe
+        }
+        return true; //All items match a recipe
+        //return recipeItems.get(0).test(pContainer.getItem(1)); //Get item from block entity slot!
     }
     @Override
     public ItemStack assemble(SimpleContainer pContainer) {
@@ -61,7 +67,7 @@ public class CrockpotRecipe implements Recipe<SimpleContainer> {
     public static class Type implements RecipeType<CrockpotRecipe> {
         private Type() { }
         public static final Type INSTANCE = new Type();
-        public static final String ID = "gem_cutting";
+        public static final String ID = "crockpot";
     }
 
     public static class Serializer implements RecipeSerializer<CrockpotRecipe> {
@@ -74,7 +80,7 @@ public class CrockpotRecipe implements Recipe<SimpleContainer> {
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "output"));
 
             JsonArray ingredients = GsonHelper.getAsJsonArray(json, "ingredients");
-            NonNullList<Ingredient> inputs = NonNullList.withSize(1, Ingredient.EMPTY); //Ingredient arrays
+            NonNullList<Ingredient> inputs = NonNullList.withSize(4, Ingredient.EMPTY); //Ingredient arrays
 
             for (int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));

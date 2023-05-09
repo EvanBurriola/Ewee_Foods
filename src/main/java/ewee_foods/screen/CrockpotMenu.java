@@ -24,7 +24,7 @@ public class CrockpotMenu extends AbstractContainerMenu {
     public CrockpotMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.CROCKPOT_MENU.get(), pContainerId);
         //4 must match the size of the inputs on the block entity
-        checkContainerSize(inv,5);
+        checkContainerSize(inv,4);
         blockEntity = ((CrockpotBlockEntity) entity);
         this.level = inv.player.level;
         this.data = data;
@@ -78,7 +78,7 @@ public class CrockpotMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 4;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 5;  // must be the number of slots you have!
 
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {
