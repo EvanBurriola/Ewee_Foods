@@ -58,9 +58,9 @@ public class CrockpotMenu extends AbstractContainerMenu {
     public int getScaledProgressFlame() {
         int fuel = this.data.get(2);  //current fuel
         int burnValue = this.data.get(3); //Last fuel item consumed's burn value
-        int progressFlameSize = 14; // This is the height in pixels of your flame. Flame(14w : 14h)
+        int progressFlameSize = 13; // This is the height in pixels of your flame. Flame(14w : 14h)
 
-        return burnValue != 0 && fuel != 0 ? fuel * progressFlameSize / burnValue : 0;
+        return burnValue != 0 && fuel != 0 ? (int)Math.ceil(fuel * progressFlameSize / (double)burnValue) : 0;
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons

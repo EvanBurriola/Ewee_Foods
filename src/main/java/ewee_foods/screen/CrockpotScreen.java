@@ -31,9 +31,9 @@ public class CrockpotScreen extends AbstractContainerScreen<CrockpotMenu> {
             this.blit(pPoseStack,  x+80, y+52-17, 177, 14, menu.getScaledProgressArrow(), 17);
         }
         if(menu.hasFuel()){
-            //Flame (bottom left TOFILL pix: (x+)58,(y+)50 | bottom left FILLED: 177,14 (w:14,h:14)
+            //Flame (bottom left TOFILL pix: (x+)58,(y+)52 | bottom left FILLED: 177,14 (w:14,h:14)
             int flame = menu.getScaledProgressFlame();
-            this.blit(pPoseStack, x+58, y+50-14+(14-flame), 177, 14-flame, 14, flame);
+            this.blit(pPoseStack, x+58, y+51-14+(13-flame), 177, 13-flame, 14, flame);
         }
     }
 

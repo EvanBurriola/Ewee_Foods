@@ -1,6 +1,5 @@
 package ewee_foods.block.entity.custom;
 
-import ewee_foods.Ewee_FoodsMain;
 import ewee_foods.block.entity.ModBlockEntities;
 import ewee_foods.recipe.CrockpotRecipe;
 import ewee_foods.screen.CrockpotMenu;
@@ -32,7 +31,6 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
 import java.util.Optional;
-import java.util.logging.Logger;
 
 
 public class CrockpotBlockEntity extends BlockEntity implements MenuProvider {
@@ -140,7 +138,7 @@ public class CrockpotBlockEntity extends BlockEntity implements MenuProvider {
             consumeFuel(pBlockEntity);
             pBlockEntity.progress++;
             setChanged(pLevel, pPos, pState);
-            if(pBlockEntity.progress > pBlockEntity.maxProgress) {
+            if(pBlockEntity.progress >= pBlockEntity.maxProgress) {
                 craftItem(pBlockEntity);
             }
         } else {
@@ -196,7 +194,6 @@ public class CrockpotBlockEntity extends BlockEntity implements MenuProvider {
                     ItemStack stack = entity.itemHandler.getStackInSlot(0);
                     entity.burnValue = ForgeHooks.getBurnTime(stack,RecipeType.SMELTING);
                     entity.fuel = entity.burnValue; //set fuel to fuel items burn value
-                    Ewee_FoodsMain.LOGGER.info("Burn Time: " + entity.burnValue);
                     entity.itemHandler.extractItem(0, 1, false); //Only consume fuel item if its burn value is depleted
                 }
             }
