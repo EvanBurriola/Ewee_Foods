@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import ewee_foods.block.ModBlocks;
 import ewee_foods.block.entity.ModBlockEntities;
 import ewee_foods.item.ModItems;
+import ewee_foods.recipe.ModRecipes;
 import ewee_foods.screen.CrockpotScreen;
 import ewee_foods.screen.ModMenuTypes;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -35,6 +36,7 @@ public class Ewee_FoodsMain
         ModBlocks.register(eventBus);
         ModBlockEntities.register(eventBus);
         ModMenuTypes.register(eventBus);
+        ModRecipes.register(eventBus);
 
         eventBus.addListener(this::setup);
         eventBus.addListener(this::clientSetup);

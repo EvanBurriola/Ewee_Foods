@@ -1,0 +1,11 @@
+{
+  "type": "ewee_foods:crockpot",
+  "ingredients": [
+    {
+      "item": "ewee_foods:salt"
+    }
+  ],
+  "output": {
+    "item": "minecraft:cooked_beef"
+  }
+}

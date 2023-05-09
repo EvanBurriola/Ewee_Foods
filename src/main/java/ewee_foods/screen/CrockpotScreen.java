@@ -24,6 +24,11 @@ public class CrockpotScreen extends AbstractContainerScreen<CrockpotMenu> {
         int y = (height - imageHeight) / 2;
 
         this.blit(pPoseStack, x, y, 0, 0, imageWidth, imageHeight);
+
+        //pX,pY,pUoffset, pVoffset, pUWidth
+        if(menu.isCrafting()) {
+            blit(pPoseStack, x + 102, y + 41, 176, 0, 8, menu.getScaledProgress());
+        }
     }
 
     @Override
