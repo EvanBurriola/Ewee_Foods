@@ -11,7 +11,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class CrockpotScreen extends AbstractContainerScreen<CrockpotMenu> {
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(Ewee_FoodsMain.MOD_ID, "textures/gui/crockpot_gui.png");
+            new ResourceLocation(Ewee_FoodsMain.MOD_ID, "textures/gui/crockpot.png");
     public CrockpotScreen(CrockpotMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
     }
@@ -27,7 +27,11 @@ public class CrockpotScreen extends AbstractContainerScreen<CrockpotMenu> {
 
         //pX,pY,pUoffset, pVoffset, pUWidth
         if(menu.isCrafting()) {
-            blit(pPoseStack, x + 102, y + 41, 176, 0, 8, menu.getScaledProgress());
+            //Flame (bottom left TOFILL pix: 58,50 | bottom left FILLED: 177,14 (w:14,h:14)
+            blit(pPoseStack, x + 58, y + 50, 177, 14, 14, 14-menu.getScaledProgressFlame());
+
+            //Arrow (bottom left TOFILL pix: 80,52 | bottom left FILLED: 177,31 (w:24,h:17)
+            blit(pPoseStack, x + 80, y + 52, 177, 31, menu.getScaledProgressArrow(), 17);
         }
     }
 

@@ -18,9 +18,11 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -40,7 +42,7 @@ import java.util.zip.CRC32;
 
 public class CrockpotBlockEntity extends BlockEntity implements MenuProvider {
     //size: 4 -> slots in block entity
-    private final ItemStackHandler itemHandler = new ItemStackHandler(4 ){
+    private final ItemStackHandler itemHandler = new ItemStackHandler(5 ){
         @Override
         protected void onContentsChanged(int slot){
             setChanged();
@@ -157,16 +159,17 @@ public class CrockpotBlockEntity extends BlockEntity implements MenuProvider {
 
         return match.isPresent() && canInsertAmountIntoOutputSlot(inventory)
                 && canInsertItemIntoOutputSlot(inventory, match.get().getResultItem())
-                && hasWaterInWaterSlot(entity) && hasToolsInToolSlot(entity);
+                && hasFuelInSlot(entity);
     }
 
-    private static boolean hasWaterInWaterSlot(CrockpotBlockEntity entity) {
-        return PotionUtils.getPotion(entity.itemHandler.getStackInSlot(0)) == Potions.WATER;
+    private static boolean hasFuelInSlot(CrockpotBlockEntity entity) {
+        ItemStack stack = entity.itemHandler.getStackInSlot(0);
+        return stack.getBurnTime(RecipeType.SMELTING) != 0; //Returns true if item in fuel slot has a burn time property
     }
 
-    private static boolean hasToolsInToolSlot(CrockpotBlockEntity entity) {
-        return entity.itemHandler.getStackInSlot(2).getItem() == ModItems.SALT.get();
-    }
+//    private static boolean hasToolsInToolSlot(CrockpotBlockEntity entity) {
+//        return entity.itemHandler.getStackInSlot(2).getItem() == ModItems.SALT.get();
+//    }
 
     private static void craftItem(CrockpotBlockEntity entity) {
         Level level = entity.level;
@@ -181,10 +184,12 @@ public class CrockpotBlockEntity extends BlockEntity implements MenuProvider {
         if(match.isPresent()) {
             entity.itemHandler.extractItem(0,1, false);
             entity.itemHandler.extractItem(1,1, false);
-            entity.itemHandler.getStackInSlot(2).hurt(1, new Random(), null);
+            entity.itemHandler.extractItem(2,1, false);
+            entity.itemHandler.extractItem(3,1, false);
+//            entity.itemHandler.getStackInSlot(2).hurt(1, new Random(), null); <- code for tool
 
-            entity.itemHandler.setStackInSlot(3, new ItemStack(match.get().getResultItem().getItem(),
-                    entity.itemHandler.getStackInSlot(3).getCount() + 1));
+            entity.itemHandler.setStackInSlot(4, new ItemStack(match.get().getResultItem().getItem(),
+                    entity.itemHandler.getStackInSlot(4).getCount() + 1));
 
             entity.resetProgress();
         }
@@ -195,10 +200,10 @@ public class CrockpotBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack output) {
-        return inventory.getItem(3).getItem() == output.getItem() || inventory.getItem(3).isEmpty();
+        return inventory.getItem(4).getItem() == output.getItem() || inventory.getItem(4).isEmpty();
     }
 
     private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
-        return inventory.getItem(3).getMaxStackSize() > inventory.getItem(3).getCount();
+        return inventory.getItem(4).getMaxStackSize() > inventory.getItem(4).getCount();
     }
 }

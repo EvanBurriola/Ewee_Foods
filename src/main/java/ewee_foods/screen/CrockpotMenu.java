@@ -24,7 +24,7 @@ public class CrockpotMenu extends AbstractContainerMenu {
     public CrockpotMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.CROCKPOT_MENU.get(), pContainerId);
         //4 must match the size of the inputs on the block entity
-        checkContainerSize(inv,4);
+        checkContainerSize(inv,5);
         blockEntity = ((CrockpotBlockEntity) entity);
         this.level = inv.player.level;
         this.data = data;
@@ -33,10 +33,11 @@ public class CrockpotMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 34, 40));
-            this.addSlot(new SlotItemHandler(handler, 1, 57, 18));
-            this.addSlot(new SlotItemHandler(handler, 2, 103, 18));
-            this.addSlot(new ModResultSlot(handler, 3, 80, 60));
+            this.addSlot(new SlotItemHandler(handler, 0, 56, 53));
+            this.addSlot(new SlotItemHandler(handler, 1, 38, 17));
+            this.addSlot(new SlotItemHandler(handler, 2, 56, 17));
+            this.addSlot(new SlotItemHandler(handler, 3, 74, 17));
+            this.addSlot(new ModResultSlot(handler, 4, 116, 35));
         });
 
         addDataSlots(data);
@@ -45,12 +46,20 @@ public class CrockpotMenu extends AbstractContainerMenu {
         return data.get(0) > 0;
     }
 
-    public int getScaledProgress() {
+    public int getScaledProgressArrow() {
         int progress = this.data.get(0);
         int maxProgress = this.data.get(1);  // Max Progress
-        int progressArrowSize = 26; // This is the height in pixels of your arrow
+        int progressArrowSize = 24; // This is the width in pixels of your arrow. Arrow(24w : 17h)
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
+    }
+
+    public int getScaledProgressFlame() {
+        int progress = this.data.get(0);
+        int maxProgress = this.data.get(1);  // Max Progress
+        int progressFlameSize = 14; // This is the height in pixels of your arrow. Flame(14w : 14h)
+
+        return maxProgress != 0 && progress != 0 ? progress * progressFlameSize / maxProgress : 0;
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
@@ -113,14 +122,16 @@ public class CrockpotMenu extends AbstractContainerMenu {
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 86 + i * 18));
+                //86->84
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 84 + i * 18));
             }
         }
     }
 
     private void addPlayerHotbar(Inventory playerInventory) {
         for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 144));
+            //144->142
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
     }
 }
