@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "ewee_foods:flour"
+    }
+  },
+  "result": {
+    "item": "ewee_foods:flour_bag"
+  }
+}

@@ -1,6 +1,9 @@
 {
   "item.ewee_foods.salt": "Salt",
+  "item.ewee_foods.flour": "Flour",
+  "item.ewee_foods.flour_bag": "Bag of Flour",
   "item.ewee_foods.cured_meat": "Cured Meat",
+  "item.ewee_foods.chicken_fried_steak": "Chicken Fried Steak",
 
   "block.ewee_foods.salt_mineral": "Salt Mineral",
 

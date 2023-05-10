@@ -24,6 +24,12 @@ public class ModFoods {
             .meat()
             .fast()
             .build();
+    public static final FoodProperties CHICKEN_FRIED_STEAK = (new FoodProperties.Builder())
+            .nutrition(16)
+            .saturationMod(1.5F)
+            .meat()
+            .effect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 400, 0), 1.0F)
+            .build();
 
 
 }

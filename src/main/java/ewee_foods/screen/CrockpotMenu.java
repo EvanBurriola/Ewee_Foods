@@ -2,6 +2,7 @@ package ewee_foods.screen;
 
 import ewee_foods.block.ModBlocks;
 import ewee_foods.block.entity.custom.CrockpotBlockEntity;
+import ewee_foods.screen.slot.ModFuelSlot;
 import ewee_foods.screen.slot.ModResultSlot;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
@@ -33,7 +34,7 @@ public class CrockpotMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 56, 53));
+            this.addSlot(new ModFuelSlot(handler, 0, 56, 53));
             this.addSlot(new SlotItemHandler(handler, 1, 38, 17));
             this.addSlot(new SlotItemHandler(handler, 2, 56, 17));
             this.addSlot(new SlotItemHandler(handler, 3, 74, 17));

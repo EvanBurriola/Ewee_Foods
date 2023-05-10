@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "ewee_foods:flour_bag"
+    }
+  ],
+  "result": {
+    "item": "ewee_foods:flour",
+    "count": 9
+  }
+}

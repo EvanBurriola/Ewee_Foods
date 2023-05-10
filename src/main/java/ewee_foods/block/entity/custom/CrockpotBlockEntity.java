@@ -165,7 +165,6 @@ public class CrockpotBlockEntity extends BlockEntity implements MenuProvider {
                 && canInsertItemIntoOutputSlot(inventory, match.get().getResultItem())
                 && (hasFuel(entity) || hasFuelInSlot(entity));
     }
-
     //Update this to check if there is fuel, give entity fuel value of getBurnTime. Only consume fuel in the slot if
     // entity fuel value = 0
     private static boolean hasFuelInSlot(CrockpotBlockEntity entity) {

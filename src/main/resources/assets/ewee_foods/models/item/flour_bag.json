@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ewee_foods:item/flour_bag"
+  }
+}
