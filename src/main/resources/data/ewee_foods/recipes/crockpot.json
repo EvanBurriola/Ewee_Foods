@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    " E ",
+    " C "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:heavy_weighted_pressure_plate"
+    },
+    "C": {
+      "item": "minecraft:campfire"
+    },
+    "E": {
+      "item": "minecraft:cauldron"
+    }
+  },
+  "result": {
+    "item": "ewee_foods:crockpot"
+  }
+}

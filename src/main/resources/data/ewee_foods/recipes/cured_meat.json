@@ -1,0 +1,17 @@
+{
+  "type": "ewee_foods:crockpot",
+  "ingredients": [
+    {
+      "item": "ewee_foods:salt"
+    },
+    {
+      "item": "minecraft:rotten_flesh"
+    },
+    {
+      "item": "ewee_foods:salt"
+    }
+  ],
+  "output": {
+    "item": "ewee_foods:cured_meat"
+  }
+}
