@@ -26,15 +26,23 @@ public class CrockpotRecipe implements Recipe<SimpleContainer> {
     }
     @Override
     public boolean matches(SimpleContainer pContainer, Level pLevel) {
-        //if(pLevel.isClientSide()) return false; IF ENTITY CRASHES(ticking block entity error) ON SERVER
-        //REMOVE +-1 for strict recipe.
-        //GOAL: never check fuel slot, make method verify
+        //GOAL: to create a 1 for 1 match between each item in the inventory and the recipe
+        boolean[] slots = {false,false,false}; //Each boolean represents a match between the current inventory and the recipe
         for(int i = 0; i < recipeItems.size(); i++){
-            if(!recipeItems.get(i).test(pContainer.getItem(i+1)))
-                return false; //If item doesn't match a recipe
+            for(int j = 0; j < recipeItems.size(); j++){
+                if(recipeItems.get(i).test(pContainer.getItem(j+1)) && slots[j] != true) { //+1 to avoid the fuel slot! slots[j] checks that this slot isnt matched already
+                    slots[j] = true; //Found a match in this input slot of the crockpot
+                    break;
+                }
+            }
         }
-        return true; //All items match a recipe
-        //return recipeItems.get(0).test(pContainer.getItem(1)); //Get item from block entity slot!
+
+        //Check match slots
+        for (boolean match : slots){
+            if(!match)
+                return false; //recipe doesn't match inv! not a complete 1 to 1 match for each item
+        }
+        return true;
     }
     @Override
     public ItemStack assemble(SimpleContainer pContainer) {
