@@ -21,6 +21,8 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(ModFoods.CURED_MEAT)));
     public static final RegistryObject<Item> CHICKEN_FRIED_STEAK = ITEMS.register("chicken_fried_steak",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(ModFoods.CHICKEN_FRIED_STEAK)));
+    public static final RegistryObject<Item> FRESH_LOAF = ITEMS.register("fresh_loaf",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(ModFoods.FRESH_LOAF)));
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }

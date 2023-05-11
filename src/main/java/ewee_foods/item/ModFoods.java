@@ -5,6 +5,9 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 
 public class ModFoods {
+    //600T = 30s
+    //1200T = 1 min
+    //6000T = 5 min
     public static final FoodProperties ENCHANTED_GOLDEN_APPLE = (new FoodProperties.Builder()).nutrition(4)
             .saturationMod(1.2F)
             .effect(new MobEffectInstance(MobEffects.REGENERATION, 400, 1), 1.0F)
@@ -26,9 +29,14 @@ public class ModFoods {
             .build();
     public static final FoodProperties CHICKEN_FRIED_STEAK = (new FoodProperties.Builder())
             .nutrition(16)
-            .saturationMod(1.5F)
+            .saturationMod(.25F)
             .meat()
-            .effect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 400, 0), 1.0F)
+            .effect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 6000, 0), 1.0F)
+            .build();
+    public static final FoodProperties FRESH_LOAF = (new FoodProperties.Builder())
+            .nutrition(5)
+            .saturationMod(1.2F)
+            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 1200, 0), 1.0F)
             .build();
 
 

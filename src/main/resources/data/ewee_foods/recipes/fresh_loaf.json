@@ -1,0 +1,17 @@
+{
+  "type": "ewee_foods:crockpot",
+  "ingredients": [
+    {
+      "item": "ewee_foods:salt"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "ewee_foods:flour_bag"
+    }
+  ],
+  "output": {
+    "item": "ewee_foods:fresh_loaf"
+  }
+}
