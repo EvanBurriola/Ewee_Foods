@@ -3,10 +3,12 @@ package ewee_foods.block;
 import ewee_foods.Ewee_FoodsMain;
 import ewee_foods.block.custom.CrockpotBlock;
 import ewee_foods.item.ModItems;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.OreBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -19,8 +21,8 @@ import java.util.function.Supplier;
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, Ewee_FoodsMain.MOD_ID);
-    public static final RegistryObject<Block> SALT_MINERAL = registerBlock("salt_mineral",() -> new Block(BlockBehaviour.Properties.of(Material.STONE)
-            .strength(9f).requiresCorrectToolForDrops()), CreativeModeTab.TAB_MISC);
+    public static final RegistryObject<Block> SALT_MINERAL = registerBlock("salt_mineral",() -> new OreBlock(BlockBehaviour.Properties.of(Material.STONE)
+            .strength(9f).requiresCorrectToolForDrops(), UniformInt.of(2,6)), CreativeModeTab.TAB_MISC);
     public static final RegistryObject<Block> CROCKPOT = registerBlock("crockpot",() -> new CrockpotBlock(BlockBehaviour.Properties.of(Material.STONE)
             .strength(2f).noOcclusion().requiresCorrectToolForDrops()), CreativeModeTab.TAB_MISC);
 

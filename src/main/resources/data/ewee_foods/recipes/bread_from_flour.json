@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "ewee_foods:flour"
+  },
+  "result": "minecraft:bread",
+  "experience": 0.50,
+  "cookingtime": 200
+}

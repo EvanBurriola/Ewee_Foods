@@ -28,15 +28,22 @@ public class ModFoods {
             .fast()
             .build();
     public static final FoodProperties CHICKEN_FRIED_STEAK = (new FoodProperties.Builder())
-            .nutrition(16)
+            .nutrition(10)
             .saturationMod(.25F)
             .meat()
             .effect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 6000, 0), 1.0F)
             .build();
     public static final FoodProperties FRESH_LOAF = (new FoodProperties.Builder())
             .nutrition(5)
-            .saturationMod(1.2F)
+            .saturationMod(.40F)
             .effect(new MobEffectInstance(MobEffects.ABSORPTION, 1200, 0), 1.0F)
+            .build();
+
+    public static final FoodProperties GLAZED_RABBIT = (new FoodProperties.Builder())
+            .nutrition(8)
+            .saturationMod(.25F)
+            .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 800, 1), 1.0F)
+            .effect(new MobEffectInstance(MobEffects.WEAKNESS, 800, 0), 0.5F)
             .build();
 
 
