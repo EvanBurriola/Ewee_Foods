@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " A ",
-    " E ",
-    " C "
+    "BAB",
+    "BEB",
+    "BCB"
   ],
   "key": {
     "A": {
@@ -14,6 +14,9 @@
     },
     "E": {
       "item": "minecraft:cauldron"
+    },
+    "B": {
+      "item": "minecraft:stick"
     }
   },
   "result": {
