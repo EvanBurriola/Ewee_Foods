@@ -8,22 +8,11 @@ public class ModFoods {
     //600T = 30s
     //1200T = 1 min
     //6000T = 5 min
-    public static final FoodProperties ENCHANTED_GOLDEN_APPLE = (new FoodProperties.Builder()).nutrition(4)
-            .saturationMod(1.2F)
-            .effect(new MobEffectInstance(MobEffects.REGENERATION, 400, 1), 1.0F)
-            .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 6000, 0), 1.0F)
-            .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 6000, 0), 1.0F)
-            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 2400, 3), 1.0F)
-            .alwaysEat()
-            .build();
-    public static final FoodProperties COOKED_BEEF = (new FoodProperties.Builder())
-            .nutrition(8)
-            .saturationMod(0.8F)
-            .meat()
-            .build();
     public static final FoodProperties CURED_MEAT = (new FoodProperties.Builder())
             .nutrition(4)
             .saturationMod(1.5F)
+            .effect(new MobEffectInstance(MobEffects.NIGHT_VISION, 600, 0), 1.0F)
+            .effect(new MobEffectInstance(MobEffects.CONFUSION, 220, 0), 0.5F)
             .meat()
             .fast()
             .build();
@@ -42,9 +31,25 @@ public class ModFoods {
     public static final FoodProperties GLAZED_RABBIT = (new FoodProperties.Builder())
             .nutrition(8)
             .saturationMod(.25F)
-            .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 800, 1), 1.0F)
-            .effect(new MobEffectInstance(MobEffects.WEAKNESS, 800, 0), 0.5F)
+            .meat()
+            .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 800, 0), 1.0F)
+            .effect(new MobEffectInstance(MobEffects.JUMP, 800, 1), 1.0F)
+            .effect(new MobEffectInstance(MobEffects.WEAKNESS, 800, 0), 0.25F)
             .build();
 
+    public static final FoodProperties ROAST = (new FoodProperties.Builder())
+            .nutrition(12)
+            .saturationMod(0.33F)
+            .meat()
+            .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 800,0), 1.0F)
+            .effect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 800,0), 1.0F)
+            .build();
+
+    public static final FoodProperties NUTRITIOUS_SOUP = (new FoodProperties.Builder())
+            .nutrition(8)
+            .saturationMod(0.5F)
+            .effect(new MobEffectInstance(MobEffects.DIG_SPEED, 6000,5), 1.0F)
+            .effect(new MobEffectInstance(MobEffects.WEAKNESS, 6000,3), 1.0F)
+            .build();
 
 }

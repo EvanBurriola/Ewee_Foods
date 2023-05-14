@@ -1,0 +1,17 @@
+{
+  "type": "ewee_foods:crockpot",
+  "ingredients": [
+    {
+      "item": "ewee_foods:salt"
+    },
+    {
+      "item": "minecraft:beetroot_soup"
+    },
+    {
+      "item": "minecraft:golden_carrot"
+    }
+  ],
+  "output": {
+    "item": "ewee_foods:nutritious_soup"
+  }
+}
