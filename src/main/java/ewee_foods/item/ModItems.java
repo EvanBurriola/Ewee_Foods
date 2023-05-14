@@ -26,6 +26,10 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(ModFoods.FRESH_LOAF)));
     public static final RegistryObject<Item> GLAZED_RABBIT = ITEMS.register("glazed_rabbit",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(ModFoods.GLAZED_RABBIT)));
+    public static final RegistryObject<Item> ROAST = ITEMS.register("roast",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(ModFoods.ROAST)));
+    public static final RegistryObject<Item> NUTRITIOUS_SOUP  = ITEMS.register("nutritious_soup",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(ModFoods.NUTRITIOUS_SOUP)));
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }

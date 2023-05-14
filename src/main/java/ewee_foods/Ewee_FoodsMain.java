@@ -24,7 +24,7 @@ import org.slf4j.Logger;
 public class Ewee_FoodsMain
 {
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
     public static final String MOD_ID = "ewee_foods";
 
     public Ewee_FoodsMain()

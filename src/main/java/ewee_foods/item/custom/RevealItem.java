@@ -38,7 +38,7 @@ public class RevealItem extends Item {
         List<Entity> entities = pLevel.getEntities(null,boundingBox);
         for(Entity e : entities){
             if(e instanceof LivingEntity && !(e instanceof Player))
-                ((LivingEntity) e).addEffect(new MobEffectInstance(MobEffects.GLOWING, 400,1));
+                ((LivingEntity) e).addEffect(new MobEffectInstance(MobEffects.GLOWING, 600,1));
         }
     }
 }
