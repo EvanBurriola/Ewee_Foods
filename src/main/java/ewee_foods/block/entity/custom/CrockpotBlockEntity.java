@@ -38,13 +38,13 @@ import java.util.Optional;
 
 public class CrockpotBlockEntity extends BlockEntity implements MenuProvider {
     //size: 4 -> slots in block entity
-
     private final ItemStackHandler itemHandler = new ItemStackHandler(5 ){
         @Override
         protected void onContentsChanged(int slot){
             setChanged();
         }
     };
+
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
     protected final ContainerData data;

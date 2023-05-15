@@ -24,7 +24,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> SALT_MINERAL = registerBlock("salt_mineral",() -> new OreBlock(BlockBehaviour.Properties.of(Material.STONE)
             .strength(9f).requiresCorrectToolForDrops(), UniformInt.of(2,6)), CreativeModeTab.TAB_MISC);
     public static final RegistryObject<Block> CROCKPOT = registerBlock("crockpot",() -> new CrockpotBlock(BlockBehaviour.Properties.of(Material.STONE)
-            .strength(2f).noOcclusion().requiresCorrectToolForDrops()), CreativeModeTab.TAB_MISC);
+            .strength(2f).noOcclusion().requiresCorrectToolForDrops().lightLevel(state -> 15)), CreativeModeTab.TAB_MISC);
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab){
         RegistryObject<T> toReturn = BLOCKS.register(name,block);
