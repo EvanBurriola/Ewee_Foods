@@ -1,0 +1,17 @@
+{
+  "type": "ewee_foods:crockpot",
+  "ingredients": [
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:porkchop"
+    }
+  ],
+  "output": {
+    "item": "ewee_foods:bacon_and_eggs"
+  }
+}

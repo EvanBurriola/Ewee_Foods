@@ -1,0 +1,17 @@
+{
+  "type": "ewee_foods:crockpot",
+  "ingredients": [
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "item": "minecraft:redstone"
+    },
+    {
+      "item": "ewee_foods:fresh_loaf"
+    }
+  ],
+  "output": {
+    "item": "ewee_foods:spicy_chicken_sandwich"
+  }
+}

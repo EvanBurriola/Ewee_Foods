@@ -1,0 +1,17 @@
+{
+  "type": "ewee_foods:crockpot",
+  "ingredients": [
+    {
+      "item": "minecraft:turtle_egg"
+    },
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "minecraft:turtle_helmet"
+    }
+  ],
+  "output": {
+    "item": "ewee_foods:roast_beef"
+  }
+}

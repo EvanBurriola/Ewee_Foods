@@ -52,4 +52,24 @@ public class ModFoods {
             .effect(new MobEffectInstance(MobEffects.WEAKNESS, 6000,3), 1.0F)
             .build();
 
+    public static final FoodProperties ROAST_BEEF = (new FoodProperties.Builder())
+            .nutrition(8)
+            .saturationMod(0.5F)
+            .effect(new MobEffectInstance(MobEffects.LUCK, 6000, 1), 1.0F)
+            .build();
+
+    public static final FoodProperties SPICY_CHICKEN_SANDWICH = (new FoodProperties.Builder())
+            .nutrition(8)
+            .saturationMod(0.25F)
+            .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 2400, 1), 1.0F)
+            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 1200, 0), 1.0F)
+            .meat()
+            .build();
+
+    public static final FoodProperties BACON_AND_EGGS = (new FoodProperties.Builder())
+            .nutrition(8)
+            .saturationMod(0.25F)
+            .effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 2400, 0), 1.0F)
+            .meat()
+            .build();
 }
