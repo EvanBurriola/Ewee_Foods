@@ -72,4 +72,12 @@ public class ModFoods {
             .effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 2400, 0), 1.0F)
             .meat()
             .build();
+
+    public static final FoodProperties LAMB_BAT = (new FoodProperties.Builder())
+            .nutrition(8)
+            .saturationMod(0.25F)
+            .effect(new MobEffectInstance(MobEffects.HEAL, 1, 0), 1.0F)
+            .meat()
+            .fast()
+            .build();
 }

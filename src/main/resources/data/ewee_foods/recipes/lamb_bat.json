@@ -1,0 +1,17 @@
+{
+  "type": "ewee_foods:crockpot",
+  "ingredients": [
+    {
+      "item": "minecraft:mutton"
+    },
+    {
+      "item": "minecraft:bone"
+    },
+    {
+      "item": "ewee_foods:salt"
+    }
+  ],
+  "output": {
+    "item": "ewee_foods:lamb_bat"
+  }
+}

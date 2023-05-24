@@ -36,6 +36,9 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(ModFoods.SPICY_CHICKEN_SANDWICH).stacksTo(16)));
     public static final RegistryObject<Item> BACON_AND_EGGS  = ITEMS.register("bacon_and_eggs",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(ModFoods.BACON_AND_EGGS).stacksTo(8)));
+
+    public static final RegistryObject<Item> LAMB_BAT  = ITEMS.register("lamb_bat",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(ModFoods.LAMB_BAT).stacksTo(8)));
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }
