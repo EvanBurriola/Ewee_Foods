@@ -1,0 +1,17 @@
+{
+  "type": "ewee_foods:crockpot",
+  "ingredients": [
+    {
+      "item": "minecraft:dried_kelp"
+    },
+    {
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "ewee_foods:salt"
+    }
+  ],
+  "output": {
+    "item": "ewee_foods:sushi"
+  }
+}

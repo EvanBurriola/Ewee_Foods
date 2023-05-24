@@ -80,4 +80,13 @@ public class ModFoods {
             .meat()
             .fast()
             .build();
+
+    public static final FoodProperties SUSHI = (new FoodProperties.Builder())
+            .nutrition(8)
+            .saturationMod(0.25F)
+            .effect(new MobEffectInstance(MobEffects.DOLPHINS_GRACE, 6000, 0), 1.0F)
+            .effect(new MobEffectInstance(MobEffects.WATER_BREATHING, 6000, 0), 1.0F)
+            .meat()
+            .fast()
+            .build();
 }
