@@ -1,6 +1,7 @@
 package ewee_foods.event.loot;
 
 import com.google.gson.JsonObject;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.item.Item;
@@ -26,7 +27,11 @@ public class CookBookShipwreckModifier extends LootModifier {
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
         if (context.getRandom().nextFloat() > 0f) {
-            generatedLoot.add(new ItemStack(addition, 1));
+            CompoundTag nbtData = new CompoundTag();
+            nbtData.putString("patchouli:book", "ewee_foods:cook_book");
+            ItemStack cook_book = new ItemStack(addition, 1);
+            cook_book.setTag(nbtData);
+            generatedLoot.add(cook_book);
         }
         return generatedLoot;
     }

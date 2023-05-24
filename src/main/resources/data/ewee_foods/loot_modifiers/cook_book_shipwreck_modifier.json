@@ -5,6 +5,6 @@
       "loot_table_id": "minecraft:chests/shipwreck_supply"
     }
   ],
-  "addition": "patchouli:guide_book{\"patchouli:book\":\"ewee_foods:cook_book\"}",
+  "addition": "patchouli:guide_book",
   "type": "ewee_foods:cook_book_shipwreck_modifier"
 }
