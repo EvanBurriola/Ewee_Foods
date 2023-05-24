@@ -1,0 +1,15 @@
+{
+  "name": "Chicken Fried Steak",
+  "icon": "ewee_foods:chicken_fried_steak",
+  "category": "ewee_foods:crockpot_recipes",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "This is a test entry, but it should show up!"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "ewee_foods:chicken_fried_steak"
+    }
+  ]
+}

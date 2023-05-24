@@ -1,0 +1,15 @@
+{
+  "name": "Cured Meat",
+  "icon": "ewee_foods:cured_meat",
+  "category": "ewee_foods:crockpot_recipes",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(li)Rotten Flesh $(li)Salt $(li)Salt"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "ewee_foods:cured_meat"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Sushi",
+  "icon": "ewee_foods:sushi",
+  "category": "ewee_foods:crockpot_recipes",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "This is a test entry, but it should show up!"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "ewee_foods:sushi"
+    }
+
+  ]
+}
