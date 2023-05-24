@@ -1,0 +1,10 @@
+{
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/shipwreck_supply"
+    }
+  ],
+  "addition": "patchouli:guide_book{\"patchouli:book\":\"ewee_foods:cook_book\"}",
+  "type": "ewee_foods:cook_book_shipwreck_modifier"
+}
