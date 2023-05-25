@@ -10,7 +10,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "ewee_foods:glazed_rabbit",
-      "text": "$(li)Nutrition:8 $(li)Saturation:2 $(li)Effects: $(li2)Speed Boost $(li2)Jump Boost"
+      "text": "$(li)Nutrition:8 $(li)Saturation:2 $(li)Effects: $(li2)Speed Boost $(li2)Jump Boost $(li2)May give Weakness"
     }
   ]
 }

@@ -10,7 +10,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "ewee_foods:cured_meat",
-      "text": "$(li)Nutrition:4 $(li)Saturation:6 $(li)Effects: $(li2)Night Vision $(li2)Reveal Mobs"
+      "text": "$(li)Nutrition:4 $(li)Saturation:6 $(li)Effects: $(li2)Night Vision $(li2)Reveal Mobs $(li2)May give Nausea"
     }
   ]
 }

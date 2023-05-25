@@ -10,7 +10,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "ewee_foods:nutritious_soup",
-      "text": "$(li)Nutrition:8 $(li)Saturation:2 $(li)Effects: $(li2)Haste"
+      "text": "$(li)Nutrition:8 $(li)Saturation:2 $(li)Effects: $(li2)Haste $(li2)Weakness"
     }
   ]
 }
