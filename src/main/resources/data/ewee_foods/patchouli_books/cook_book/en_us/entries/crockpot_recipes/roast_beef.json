@@ -9,7 +9,8 @@
     },
     {
       "type": "patchouli:spotlight",
-      "item": "ewee_foods:roast_beef"
+      "item": "ewee_foods:roast_beef",
+      "text": "$(li)Nutrition:8 $(li)Saturation:4 $(li)Effects: $(li2)Luck"
     }
   ]
 }

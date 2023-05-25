@@ -1,0 +1,11 @@
+{
+  "name": "Crockpot",
+  "icon": "ewee_foods:crockpot",
+  "category": "ewee_foods:crafting_recipes",
+  "pages": [
+    {
+      "type": "patchouli:crafting",
+      "recipe": "ewee_foods:crockpot"
+    }
+  ]
+}

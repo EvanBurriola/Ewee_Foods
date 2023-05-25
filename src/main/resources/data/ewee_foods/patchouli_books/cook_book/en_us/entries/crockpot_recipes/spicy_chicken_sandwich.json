@@ -9,7 +9,8 @@
     },
     {
       "type": "patchouli:spotlight",
-      "item": "ewee_foods:spicy_chicken_sandwich"
+      "item": "ewee_foods:spicy_chicken_sandwich",
+      "text": "$(li)Nutrition:8 $(li)Saturation:2 $(li)Effects: $(li2)Fire Resistance $(li2)Absorption"
     }
   ]
 }

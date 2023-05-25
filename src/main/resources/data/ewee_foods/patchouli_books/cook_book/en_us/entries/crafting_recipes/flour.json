@@ -1,0 +1,19 @@
+{
+  "name": "Flour",
+  "icon": "ewee_foods:flour_bag",
+  "category": "ewee_foods:crafting_recipes",
+  "pages": [
+    {
+      "type": "patchouli:crafting",
+      "recipe": "ewee_foods:flour"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "ewee_foods:flour_bag"
+    },
+    {
+      "type": "patchouli:smelting",
+      "recipe": "ewee_foods:bread_from_flour"
+    }
+  ]
+}

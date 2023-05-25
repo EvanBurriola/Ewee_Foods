@@ -9,7 +9,8 @@
     },
     {
       "type": "patchouli:spotlight",
-      "item": "ewee_foods:roast"
+      "item": "ewee_foods:roast",
+      "text": "$(li)Nutrition:12 $(li)Saturation:3 $(li)Effects: $(li2)Damage Resistance"
     }
   ]
 }

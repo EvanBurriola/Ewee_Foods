@@ -1,0 +1,11 @@
+{
+  "name": "Salt",
+  "icon": "ewee_foods:salt",
+  "category": "ewee_foods:crafting_recipes",
+  "pages": [
+    {
+      "type": "patchouli:crafting",
+      "recipe": "ewee_foods:salt_from_dripstone"
+    }
+  ]
+}

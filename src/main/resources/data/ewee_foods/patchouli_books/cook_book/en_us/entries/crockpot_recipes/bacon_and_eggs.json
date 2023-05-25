@@ -9,7 +9,8 @@
     },
     {
       "type": "patchouli:spotlight",
-      "item": "ewee_foods:bacon_and_eggs"
+      "item": "ewee_foods:bacon_and_eggs",
+      "text": "$(li)Nutrition:8 $(li)Saturation:2 $(li)Effects: $(li2)Health Boost"
     }
   ]
 }
